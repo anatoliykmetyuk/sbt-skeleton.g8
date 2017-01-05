@@ -1,11 +1,11 @@
 package $name;format="lower,word"$
 
-import org.scalatest._
+import org.scalacheck.Properties
+import org.scalacheck.Prop.forAll
 
-class MainSpec extends FlatSpec with Matchers {
+object MainSpec extends Properties("MainSpec") {
 
-  "True" should "be true" in {
-    true shouldBe true
-  }
-
+  property("&& law") = forAll { x: Boolean => (x && false) == false }
+  property("|| law") = forAll { x: Boolean => (x || true ) == true  }
+  
 }

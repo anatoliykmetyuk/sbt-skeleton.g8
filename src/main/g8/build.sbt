@@ -1,15 +1,22 @@
-val ScalaVer = "2.11.8"
+val ScalaVer = "2.12.1"
+
+val Cats          = "0.8.1"
+val Shapeless     = "2.3.2"
+val Scalacheck    = "1.13.4"
+val KindProjector = "0.9.3"
+
+val ScalacheckMinTests = 1000
 
 lazy val commonSettings = Seq(
   name    := "$name$"
 , version := "$version$"
-, scalaVersion := "2.11.8"
+, scalaVersion := ScalaVer
 , libraryDependencies ++= Seq(
-    "org.typelevel"  %% "cats"      % "0.7.2"
-  , "com.chuusai"    %% "shapeless" % "2.3.2"
-
-  , "org.scalatest"  %% "scalatest" % "3.0.0"  % "test"
+    "org.typelevel"  %% "cats"       % Cats
+  , "com.chuusai"    %% "shapeless"  % Shapeless
+  , "org.scalacheck" %% "scalacheck" % Scalacheck  % "test"
   )
+, addCompilerPlugin("org.spire-math" %% "kind-projector" % KindProjector)
 , scalacOptions ++= Seq(
       "-deprecation",
       "-encoding", "UTF-8",
@@ -19,11 +26,12 @@ lazy val commonSettings = Seq(
       "-language:implicitConversions",
       "-language:experimental.macros",
       "-unchecked",
-      "-Xfatal-warnings",
+      // "-Xfatal-warnings",
       "-Xlint",
-      "-Yinline-warnings",
+      // "-Yinline-warnings",
       "-Ywarn-dead-code",
       "-Xfuture")
+, testOptions in Test += Tests.Argument(TestFrameworks.ScalaCheck, "-minSuccessfulTests", ScalacheckMinTests.toString, "-workers", "10", "-verbosity", "1")
 )
 
 lazy val root = (project in file("."))
