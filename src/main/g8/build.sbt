@@ -56,6 +56,8 @@ lazy val commonSettings = Seq(
     // , "-Xfatal-warnings"
       $if(warnUnusedImports.truthy)$
     , "-Xlint"
+      $else$
+    // , "-Xlint"
       $endif$
     // , "-Yinline-warnings"
     , "-Ywarn-dead-code"

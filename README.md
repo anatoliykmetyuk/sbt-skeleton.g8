@@ -1,14 +1,15 @@
 A [giter8](https://github.com/n8han/giter8) template for creating sbt/scala project in a clean and easy way.
 
-You can create a new project skeleton with `g8 ferhtaydn/sbt-skeleton.g8` command.
+You can create a new project skeleton with `g8 anatoliykmetyuk/sbt-skeleton.g8` command.
 
-* sbt 0.13.12
-* Cross build against Scala 2.10.6, 2.11.8
+* sbt 1.0.1
 * [ScalaTest](http://www.scalatest.org/)
 * [ScalaCheck](http://www.scalacheck.org/)
-* Project `name`, `organization` and `version` customizable as variables
+* [Cats](https://typelevel.org/cats/)
+* Optional [Shapeless](https://github.com/milessabin/shapeless), [FS2](https://github.com/functional-streams-for-scala/fs2), [Apache IO](https://commons.apache.org/proper/commons-io/download_io.cgi) dependencies
+* Optional warnings about unused imports
+* Project `name` customizable as variables
 * Everything in your project's base package imported automatically in repl sessions
-* Apache 2.0 LICENSE
 * Basic README.md
 
 
